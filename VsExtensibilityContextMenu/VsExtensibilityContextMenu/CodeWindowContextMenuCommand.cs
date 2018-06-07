@@ -66,6 +66,11 @@ namespace VsExtensibilityContextMenu
         }
 
         /// <summary>
+        /// DTE object
+        /// </summary>
+        private EnvDTE.DTE _dte;
+
+        /// <summary>
         /// Initializes the singleton instance of the command.
         /// </summary>
         /// <param name="package">Owner package, not null.</param>
@@ -77,6 +82,7 @@ namespace VsExtensibilityContextMenu
 
             OleMenuCommandService commandService = await package.GetServiceAsync((typeof(IMenuCommandService))) as OleMenuCommandService;
             Instance = new CodeWindowContextMenuCommand(package, commandService);
+            Instance._dte = await package.GetServiceAsync(typeof(EnvDTE.DTE)) as EnvDTE.DTE;
         }
 
         /// <summary>
@@ -89,8 +95,9 @@ namespace VsExtensibilityContextMenu
         private void Execute(object sender, EventArgs e)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-            string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
-            string title = "CodeWindowContextMenuCommand";
+            EnvDTE.Document doc = _dte.ActiveDocument;
+            string message = $"Active window is {doc.FullName}";
+            string title = "Code Window Context Menu Command";
 
             // Show a message box to prove we were here
             VsShellUtilities.ShowMessageBox(
