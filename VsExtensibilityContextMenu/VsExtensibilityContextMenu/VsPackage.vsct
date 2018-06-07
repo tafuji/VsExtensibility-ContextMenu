@@ -40,6 +40,7 @@
       <Group guid="guidProjectContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0x0600" />
       <Group guid="guidMultiProjectsContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0x0600" />
       <Group guid="guidWebProjectContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0x0600" />
+      <Group guid="guidFileContextMenuCommandCmdSet" id="MyMenuGroup" priority="0x0600" />
     </Groups>
 
     <!--Buttons section. -->
@@ -81,6 +82,13 @@
           <ButtonText>Invoke WebProjectContextMenuCommand</ButtonText>
         </Strings>
       </Button>
+      <Button guid="guidFileContextMenuCommandCmdSet" id="cmdidFileContextMenuCommand" priority="0x0100" type="Button">
+        <Parent guid="guidFileContextMenuCommandCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages4" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Invoke FileContextMenuCommand</ButtonText>
+        </Strings>
+      </Button>
     </Buttons>
 
     <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
@@ -94,10 +102,12 @@
       <Bitmap guid="guidImages1" href="Resources\ProjectContextMenuCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
       <Bitmap guid="guidImages2" href="Resources\MultiProjectsContextMenuCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
       <Bitmap guid="guidImages3" href="Resources\WebProjectContextMenuCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages4" href="Resources\FileContextMenuCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
     </Bitmaps>
   </Commands>
 
   <CommandPlacements>
+    <!-- Solution Context Menu -->
     <CommandPlacement guid="guidSolutionContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0xFFFF">
       <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE" />
     </CommandPlacement>
@@ -115,6 +125,11 @@
     <!-- Web Project Context Menu-->
     <CommandPlacement guid="guidWebProjectContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0xFFFF">
       <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_WEBPROJECT" />
+    </CommandPlacement>
+
+    <!-- File Context Menu -->
+    <CommandPlacement guid="guidFileContextMenuCommandCmdSet" id="MyMenuGroup" priority="0xFFFF">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
     </CommandPlacement>
 
   </CommandPlacements>
@@ -172,6 +187,20 @@
     </GuidSymbol>
   
     <GuidSymbol value="{965f1044-00eb-46f5-868d-0ced614f04d7}" name="guidImages3">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{c5221307-03b3-4d2a-be3a-7d68c7b4f095}" name="guidFileContextMenuCommandCmdSet">
+      <IDSymbol value="4128" name="MyMenuGroup" />
+      <IDSymbol value="256" name="cmdidFileContextMenuCommand" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{460f6caa-e8ad-4e9f-9e7f-dfe7a78cd0a9}" name="guidImages4">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />
       <IDSymbol name="bmpPicSearch" value="3" />
