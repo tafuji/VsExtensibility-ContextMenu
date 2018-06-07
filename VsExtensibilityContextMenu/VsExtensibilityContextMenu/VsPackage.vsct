@@ -37,9 +37,9 @@
          must be a menu. -->
     <Groups>
       <Group guid="guidSolutionContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0x0600" />
-      <Group guid="guidVsPackageCmdSet" id="MyMenuGroup" priority="0x0600" />
-      <Group guid="guidMultiProjectsContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0x0600">
-      </Group>
+      <Group guid="guidProjectContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0x0600" />
+      <Group guid="guidMultiProjectsContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0x0600" />
+      <Group guid="guidWebProjectContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0x0600" />
     </Groups>
 
     <!--Buttons section. -->
@@ -60,8 +60,8 @@
           <ButtonText>Invoke Solution Context Menu Command</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidVsPackageCmdSet" id="cmdidProjectContextMenuCommand" priority="0x0100" type="Button">
-        <Parent guid="guidVsPackageCmdSet" id="MyMenuGroup" />
+      <Button guid="guidProjectContextMenuCommandPackageCmdSet" id="cmdidProjectContextMenuCommand" priority="0x0100" type="Button">
+        <Parent guid="guidProjectContextMenuCommandPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages1" id="bmpPic1" />
         <Strings>
           <ButtonText>Invoke Project Context Menu Command</ButtonText>
@@ -72,6 +72,13 @@
         <Icon guid="guidImages2" id="bmpPic1" />
         <Strings>
           <ButtonText>Invoke Multi Projects Context Menu Command</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidWebProjectContextMenuCommandPackageCmdSet" id="cmdidWebProjectContextMenuCommand" priority="0x0100" type="Button">
+        <Parent guid="guidWebProjectContextMenuCommandPackageCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages3" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Invoke WebProjectContextMenuCommand</ButtonText>
         </Strings>
       </Button>
     </Buttons>
@@ -86,6 +93,7 @@
       <Bitmap guid="guidImages" href="Resources\SolutionContextMenuCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
       <Bitmap guid="guidImages1" href="Resources\ProjectContextMenuCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
       <Bitmap guid="guidImages2" href="Resources\MultiProjectsContextMenuCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages3" href="Resources\WebProjectContextMenuCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
     </Bitmaps>
   </Commands>
 
@@ -95,7 +103,7 @@
     </CommandPlacement>
 
     <!-- Project Node -->
-    <CommandPlacement guid="guidVsPackageCmdSet" id="MyMenuGroup" priority="0xFFFF">
+    <CommandPlacement guid="guidProjectContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0xFFFF">
       <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
     </CommandPlacement>
 
@@ -104,6 +112,10 @@
       <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_XPROJ_MULTIPROJ" />
     </CommandPlacement>
 
+    <!-- Web Project Context Menu-->
+    <CommandPlacement guid="guidWebProjectContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0xFFFF">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_WEBPROJECT" />
+    </CommandPlacement>
 
   </CommandPlacements>
 
@@ -126,7 +138,7 @@
       <IDSymbol name="bmpPicStrikethrough" value="6" />
     </GuidSymbol>
   
-    <GuidSymbol value="{568b5140-bc06-4105-bd49-cd48a7933b01}" name="guidVsPackageCmdSet">
+    <GuidSymbol value="{568b5140-bc06-4105-bd49-cd48a7933b01}" name="guidProjectContextMenuCommandPackageCmdSet">
       <IDSymbol value="4128" name="MyMenuGroup" />
       <IDSymbol value="256" name="cmdidProjectContextMenuCommand" />
     </GuidSymbol>
@@ -146,6 +158,20 @@
     </GuidSymbol>
   
     <GuidSymbol value="{9c35019f-7d62-464a-aeb6-bf3d002e99ec}" name="guidImages2">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{be561888-6b16-4eab-be7a-404bb2a05f8c}" name="guidWebProjectContextMenuCommandPackageCmdSet">
+      <IDSymbol value="4128" name="MyMenuGroup" />
+      <IDSymbol value="256" name="cmdidWebProjectContextMenuCommand" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{965f1044-00eb-46f5-868d-0ced614f04d7}" name="guidImages3">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />
       <IDSymbol name="bmpPicSearch" value="3" />

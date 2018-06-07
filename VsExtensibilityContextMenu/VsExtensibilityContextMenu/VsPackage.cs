@@ -72,6 +72,7 @@ namespace VsExtensibilityContextMenu
             await SolutionContextMenuCommand.InitializeAsync(this);
             await ProjectContextMenuCommand.InitializeAsync(this);
             await MultiProjectsContextMenuCommand.InitializeAsync(this);
+            await WebProjectContextMenuCommand.InitializeAsync(this);
         }
 
         #endregion
