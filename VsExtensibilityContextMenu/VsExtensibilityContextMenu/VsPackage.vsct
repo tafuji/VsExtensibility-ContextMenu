@@ -41,6 +41,7 @@
       <Group guid="guidMultiProjectsContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0x0600" />
       <Group guid="guidWebProjectContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0x0600" />
       <Group guid="guidFileContextMenuCommandCmdSet" id="MyMenuGroup" priority="0x0600" />
+      <Group guid="guidCodeWindowContextMenuCommandCmdSet" id="MyMenuGroup" priority="0x0600" />
     </Groups>
 
     <!--Buttons section. -->
@@ -79,14 +80,21 @@
         <Parent guid="guidWebProjectContextMenuCommandPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages3" id="bmpPic1" />
         <Strings>
-          <ButtonText>Invoke WebProjectContextMenuCommand</ButtonText>
+          <ButtonText>Invoke Web Project Context Menu Command</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidFileContextMenuCommandCmdSet" id="cmdidFileContextMenuCommand" priority="0x0100" type="Button">
         <Parent guid="guidFileContextMenuCommandCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages4" id="bmpPic1" />
         <Strings>
-          <ButtonText>Invoke FileContextMenuCommand</ButtonText>
+          <ButtonText>Invoke File Context Menu Command</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidCodeWindowContextMenuCommandCmdSet" id="cmdidCodeWindowContextMenuCommand" priority="0x0100" type="Button">
+        <Parent guid="guidCodeWindowContextMenuCommandCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages5" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Invoke Code Window Context Menu Command</ButtonText>
         </Strings>
       </Button>
     </Buttons>
@@ -103,6 +111,7 @@
       <Bitmap guid="guidImages2" href="Resources\MultiProjectsContextMenuCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
       <Bitmap guid="guidImages3" href="Resources\WebProjectContextMenuCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
       <Bitmap guid="guidImages4" href="Resources\FileContextMenuCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages5" href="Resources\CodeWindowContextMenuCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
     </Bitmaps>
   </Commands>
 
@@ -132,6 +141,11 @@
       <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
     </CommandPlacement>
 
+    <!-- Code Windows Context Menu -->
+    <CommandPlacement guid="guidCodeWindowContextMenuCommandCmdSet" id="MyMenuGroup" priority="0xFFF">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
+    </CommandPlacement>
+    
   </CommandPlacements>
 
   <Symbols>
@@ -201,6 +215,20 @@
     </GuidSymbol>
   
     <GuidSymbol value="{460f6caa-e8ad-4e9f-9e7f-dfe7a78cd0a9}" name="guidImages4">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{be722024-2330-48cc-9888-afe3af68c167}" name="guidCodeWindowContextMenuCommandCmdSet">
+      <IDSymbol value="4128" name="MyMenuGroup" />
+      <IDSymbol value="256" name="cmdidCodeWindowContextMenuCommand" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{958832e6-24e6-41e7-b2cd-c3b3df5e6160}" name="guidImages5">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />
       <IDSymbol name="bmpPicSearch" value="3" />
