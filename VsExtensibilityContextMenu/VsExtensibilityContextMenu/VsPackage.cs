@@ -71,6 +71,7 @@ namespace VsExtensibilityContextMenu
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await SolutionContextMenuCommand.InitializeAsync(this);
             await ProjectContextMenuCommand.InitializeAsync(this);
+            await MultiProjectsContextMenuCommand.InitializeAsync(this);
         }
 
         #endregion

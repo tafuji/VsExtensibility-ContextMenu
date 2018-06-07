@@ -38,6 +38,8 @@
     <Groups>
       <Group guid="guidSolutionContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0x0600" />
       <Group guid="guidVsPackageCmdSet" id="MyMenuGroup" priority="0x0600" />
+      <Group guid="guidMultiProjectsContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0x0600">
+      </Group>
     </Groups>
 
     <!--Buttons section. -->
@@ -62,7 +64,14 @@
         <Parent guid="guidVsPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages1" id="bmpPic1" />
         <Strings>
-          <ButtonText>Invoke ProjectContextMenuCommand</ButtonText>
+          <ButtonText>Invoke Project Context Menu Command</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMultiProjectsContextMenuCommandPackageCmdSet" id="cmdidMultiProjectsContextMenuCommand" priority="0x0100" type="Button">
+        <Parent guid="guidMultiProjectsContextMenuCommandPackageCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages2" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Invoke Multi Projects Context Menu Command</ButtonText>
         </Strings>
       </Button>
     </Buttons>
@@ -76,6 +85,7 @@
             must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
       <Bitmap guid="guidImages" href="Resources\SolutionContextMenuCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
       <Bitmap guid="guidImages1" href="Resources\ProjectContextMenuCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages2" href="Resources\MultiProjectsContextMenuCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
     </Bitmaps>
   </Commands>
 
@@ -86,9 +96,15 @@
 
     <!-- Project Node -->
     <CommandPlacement guid="guidVsPackageCmdSet" id="MyMenuGroup" priority="0xFFFF">
-      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE"/>
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
     </CommandPlacement>
-    
+
+    <!-- Multi Projects Selected -->
+    <CommandPlacement guid="guidMultiProjectsContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0xFFFF">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_XPROJ_MULTIPROJ" />
+    </CommandPlacement>
+
+
   </CommandPlacements>
 
   <Symbols>
@@ -116,6 +132,20 @@
     </GuidSymbol>
   
     <GuidSymbol value="{416ea416-19c8-489b-9e47-6357e0a8f5c8}" name="guidImages1">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{23394e04-ee90-4129-98e2-966230221c88}" name="guidMultiProjectsContextMenuCommandPackageCmdSet">
+      <IDSymbol value="4128" name="MyMenuGroup" />
+      <IDSymbol value="256" name="cmdidMultiProjectsContextMenuCommand" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{9c35019f-7d62-464a-aeb6-bf3d002e99ec}" name="guidImages2">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />
       <IDSymbol name="bmpPicSearch" value="3" />
