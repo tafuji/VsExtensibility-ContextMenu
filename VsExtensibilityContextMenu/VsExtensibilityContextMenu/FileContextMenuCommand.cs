@@ -102,7 +102,7 @@ namespace VsExtensibilityContextMenu
             string message = $"Selected File is {item.ProjectItem.Name}";
             string title = "File Context Menu Command";
 
-            // Show a message box to prove we were here
+            // Show a message box
             VsShellUtilities.ShowMessageBox(
                 this.package,
                 message,

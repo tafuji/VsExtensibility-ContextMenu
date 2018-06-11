@@ -42,6 +42,7 @@
       <Group guid="guidWebProjectContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0x0600" />
       <Group guid="guidFileContextMenuCommandCmdSet" id="MyMenuGroup" priority="0x0600" />
       <Group guid="guidCodeWindowContextMenuCommandCmdSet" id="MyMenuGroup" priority="0x0600" />
+      <Group guid="guidPreviousVersionWebProjectContextMenuCommandCmdSet" id="MyMenuGroup" priority="0x0600" />
     </Groups>
 
     <!--Buttons section. -->
@@ -79,6 +80,8 @@
       <Button guid="guidWebProjectContextMenuCommandPackageCmdSet" id="cmdidWebProjectContextMenuCommand" priority="0x0100" type="Button">
         <Parent guid="guidWebProjectContextMenuCommandPackageCmdSet" id="MyMenuGroup" />
         <Icon guid="guidImages" id="bmpPic1" />
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
           <ButtonText>Invoke Web Project Context Menu Command</ButtonText>
         </Strings>
@@ -95,6 +98,13 @@
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
           <ButtonText>Invoke Code Window Context Menu Command</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidPreviousVersionWebProjectContextMenuCommandCmdSet" id="cmdidPreviousVersionWebProjectContextMenuCommand" priority="0x0100" type="Button">
+        <Parent guid="guidPreviousVersionWebProjectContextMenuCommandCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Invoke Previous Version Web Project Context Menu Command</ButtonText>
         </Strings>
       </Button>
     </Buttons>
@@ -127,13 +137,13 @@
     </CommandPlacement>
 
     <!-- Web Project (Previous Versions) Context Menu-->
-    <CommandPlacement guid="guidWebProjectContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0xFFFF">
+    <CommandPlacement guid="guidPreviousVersionWebProjectContextMenuCommandCmdSet" id="MyMenuGroup" priority="0xFFFF">
       <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_WEBPROJECT" />
     </CommandPlacement>
 
     <!-- Web Project Context Menu-->
     <CommandPlacement guid="guidWebProjectContextMenuCommandPackageCmdSet" id="MyMenuGroup" priority="0xFFFF">
-      <Parent guid="guidAspNetProjectMenu" id="AspNetContextMenu" />
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
     </CommandPlacement>
 
     <!-- File Context Menu -->
@@ -155,7 +165,6 @@
     <CommandPlacement guid="guidCodeWindowContextMenuCommandCmdSet" id="MyMenuGroup" priority="0xFFF">
       <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
     </CommandPlacement>
-    
   </CommandPlacements>
 
   <Symbols>
@@ -203,16 +212,16 @@
     </GuidSymbol>
     
     <GuidSymbol name="guidCSHTMLContextMenu" value="{78F03954-2FB8-4087-8CE7-59D71710B3BB}">
-      <IDSymbol value="1" name="CSHTMLContextMenu"/>
+      <IDSymbol value="1" name="CSHTMLContextMenu" />
     </GuidSymbol>
 
     <GuidSymbol name="guidCSHTMLFileContextMenu" value="{D309F791-903F-11D0-9EFC-00A0C911004F}">
-      <IDSymbol value="1138" name="CSHTMLFileContextMenu"/>
+      <IDSymbol value="1138" name="CSHTMLFileContextMenu" />
     </GuidSymbol>
-
-    <GuidSymbol name="guidAspNetProjectMenu" value="{D309F791-903F-11D0-9EFC-00A0C911004F}" >
-      <IDSymbol value="1026" name="AspNetContextMenu" />
-    </GuidSymbol>
-    
+  
+    <GuidSymbol value="{b04f4672-b895-4170-918b-9bcb968a7f6a}" name="guidPreviousVersionWebProjectContextMenuCommandCmdSet">
+      <IDSymbol value="4128" name="MyMenuGroup" />
+      <IDSymbol value="256" name="cmdidPreviousVersionWebProjectContextMenuCommand" />
+    </GuidSymbol>  
   </Symbols>
 </CommandTable>

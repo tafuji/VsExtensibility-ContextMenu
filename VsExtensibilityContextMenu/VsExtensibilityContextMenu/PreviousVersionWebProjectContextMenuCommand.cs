@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
-using System.Text;
 
 namespace VsExtensibilityContextMenu
 {
     /// <summary>
     /// Command handler
     /// </summary>
-    internal sealed class MultiProjectsContextMenuCommand
+    internal sealed class PreviousVersionWebProjectContextMenuCommand
     {
         /// <summary>
         /// Command ID.
@@ -23,7 +22,7 @@ namespace VsExtensibilityContextMenu
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("23394e04-ee90-4129-98e2-966230221c88");
+        public static readonly Guid CommandSet = new Guid("b04f4672-b895-4170-918b-9bcb968a7f6a");
 
         /// <summary>
         /// VS Package that provides this command, not null.
@@ -31,12 +30,12 @@ namespace VsExtensibilityContextMenu
         private readonly AsyncPackage package;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MultiProjectsContextMenuCommand"/> class.
+        /// Initializes a new instance of the <see cref="PreviousVersionWebProjectContextMenuCommand"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
         /// </summary>
         /// <param name="package">Owner package, not null.</param>
         /// <param name="commandService">Command service to add command to, not null.</param>
-        private MultiProjectsContextMenuCommand(AsyncPackage package, OleMenuCommandService commandService)
+        private PreviousVersionWebProjectContextMenuCommand(AsyncPackage package, OleMenuCommandService commandService)
         {
             this.package = package ?? throw new ArgumentNullException(nameof(package));
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
@@ -49,7 +48,7 @@ namespace VsExtensibilityContextMenu
         /// <summary>
         /// Gets the instance of the command.
         /// </summary>
-        public static MultiProjectsContextMenuCommand Instance
+        public static PreviousVersionWebProjectContextMenuCommand Instance
         {
             get;
             private set;
@@ -77,12 +76,12 @@ namespace VsExtensibilityContextMenu
         /// <param name="package">Owner package, not null.</param>
         public static async Task InitializeAsync(AsyncPackage package)
         {
-            // Verify the current thread is the UI thread - the call to AddCommand in MultiProjectsContextMenuCommand's constructor requires
+            // Verify the current thread is the UI thread - the call to AddCommand in PreviousVersionWebProjectContextMenuCommand's constructor requires
             // the UI thread.
             ThreadHelper.ThrowIfNotOnUIThread();
 
             OleMenuCommandService commandService = await package.GetServiceAsync((typeof(IMenuCommandService))) as OleMenuCommandService;
-            Instance = new MultiProjectsContextMenuCommand(package, commandService);
+            Instance = new PreviousVersionWebProjectContextMenuCommand(package, commandService);
             Instance._dte = await package.GetServiceAsync(typeof(EnvDTE.DTE)) as EnvDTE.DTE;
         }
 
@@ -98,18 +97,10 @@ namespace VsExtensibilityContextMenu
             ThreadHelper.ThrowIfNotOnUIThread();
             if (_dte == null)
                 return;
-
             EnvDTE.Solution solution = _dte.Solution;
-            object[] projects = ((object[])_dte.ActiveSolutionProjects);
-            var builder = new StringBuilder();
-            foreach (var item in projects)
-            {
-                EnvDTE.Project project = (EnvDTE.Project)item;
-                builder.Append($"Project name: {project.Name}");
-                builder.Append(Environment.NewLine);
-            }
-            string message = builder.ToString();
-            string title = "Multi Projects Context Menu Command";
+            EnvDTE.Project project = (EnvDTE.Project)((object[])_dte.ActiveSolutionProjects)[0];
+            string message = $"Selected project is {project.Name}";
+            string title = "Web Project Context Menu Command";
 
             // Show a message box
             VsShellUtilities.ShowMessageBox(
