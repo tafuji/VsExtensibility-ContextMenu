@@ -32,6 +32,7 @@ namespace VsExtensibilityContextMenu
     /// To get loaded into VS, the package must be referred by &lt;Asset Type="Microsoft.VisualStudio.VsPackage" ...&gt; in .vsixmanifest file.
     /// </para>
     /// </remarks>
+    [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionExists_string)]
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)] // Info on this package for Help/About
     [ProvideMenuResource("Menus.ctmenu", 1)]
@@ -75,6 +76,7 @@ namespace VsExtensibilityContextMenu
             await WebProjectContextMenuCommand.InitializeAsync(this);
             await FileContextMenuCommand.InitializeAsync(this);
             await CodeWindowContextMenuCommand.InitializeAsync(this);
+            await PreviousVersionWebProjectContextMenuCommand.InitializeAsync(this);
         }
 
         #endregion

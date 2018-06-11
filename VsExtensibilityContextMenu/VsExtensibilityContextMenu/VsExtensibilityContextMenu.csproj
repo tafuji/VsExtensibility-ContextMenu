@@ -57,6 +57,7 @@
     <Compile Include="CodeWindowContextMenuCommand.cs" />
     <Compile Include="FileContextMenuCommand.cs" />
     <Compile Include="MultiProjectsContextMenuCommand.cs" />
+    <Compile Include="PreviousVersionWebProjectContextMenuCommand.cs" />
     <Compile Include="ProjectContextMenuCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolutionContextMenuCommand.cs" />

@@ -99,7 +99,7 @@ namespace VsExtensibilityContextMenu
             string message = $"Active window is {doc.FullName}";
             string title = "Code Window Context Menu Command";
 
-            // Show a message box to prove we were here
+            // Show a message box
             VsShellUtilities.ShowMessageBox(
                 this.package,
                 message,

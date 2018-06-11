@@ -100,7 +100,7 @@ namespace VsExtensibilityContextMenu
             string message = $"Selected Solution is {solution.FullName}";
             string title = "Solution Context Menu Command";
 
-            // Show a message box to prove we were here
+            // Show a message box
             VsShellUtilities.ShowMessageBox(
                 this.package,
                 message,

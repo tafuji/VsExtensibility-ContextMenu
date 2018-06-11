@@ -103,7 +103,7 @@ namespace VsExtensibilityContextMenu
             string message = $"Selected project is {project.Name}";
             string title = "Project Context Menu Command";
 
-            // Show a message box to prove we were here
+            // Show a message box
             VsShellUtilities.ShowMessageBox(
                 this.package,
                 message,
