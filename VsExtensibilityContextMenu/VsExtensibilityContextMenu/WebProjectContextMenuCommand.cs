@@ -54,7 +54,7 @@ namespace VsExtensibilityContextMenu
             EnvDTE.Project project = (EnvDTE.Project)((object[])_dte.ActiveSolutionProjects)[0];
 
             var cmd = (OleMenuCommand)sender;
-            cmd.Visible = project.Kind == "{9A19103F-16F7-4668-BE54-9A1E7A4F7556}" || project.Kind == "{E24C65DC-7377-472b-9ABA-BC803B73C61A}";
+            cmd.Visible = project.Kind == "{9A19103F-16F7-4668-BE54-9A1E7A4F7556}";
         }
 
         /// <summary>
